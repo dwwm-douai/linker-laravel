@@ -15,31 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home', [
-        'links' => Link::all(),
-    ]);
-});
-
-Route::post('/lien/creer', function () {
-    request()->validate([
-        'name' => 'required|min:2',
-        'url' => 'required|url',
-    ]);
-
-    Link::create(['name' => request('name'), 'url' => request('url')]);
-
-    return redirect('/');
-});
-
-Route::get('/l/{id}/afficher', function ($id) {
-    $link = Link::find($id);
-
-    return view('show', ['link' => $link]);
-});
-
-Route::get('/l/{id}', function ($id) {
-    $link = Link::find($id);
-
-    return redirect($link->url);
-});
+Route::get('/', [LinkController::class, 'index']);
+Route::post('/lien/creer', [LinkController::class, 'store']);
+Route::get('/l/{id}/afficher', [LinkController::class, 'show']);
+Route::get('/l/{id}', [LinkController::class, 'redirect']);
