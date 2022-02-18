@@ -4,6 +4,12 @@
     <h1 class="text-center">Linker</h1>
 
     <div class="mx-auto">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+
         <form action="/lien/creer" method="post">
             @csrf
 

@@ -21,6 +21,17 @@ Route::get('/', function () {
     ]);
 });
 
+Route::post('/lien/creer', function () {
+    request()->validate([
+        'name' => 'required|min:2',
+        'url' => 'required|url',
+    ]);
+
+    Link::create(['name' => request('name'), 'url' => request('url')]);
+
+    return redirect('/');
+});
+
 Route::get('/l/{id}/afficher', function ($id) {
     $link = Link::find($id);
 
