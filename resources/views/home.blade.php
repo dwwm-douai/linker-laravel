@@ -22,6 +22,12 @@
 
         <h2 class="mt-4">Mes liens</h2>
         <div class="list-group">
+            @foreach ($links as $link)
+            <li class="list-group-item list-group-item-action d-flex justify-content-between">
+                <a href="/l/{{ $link->id }}" target="_blank">{{ $link->name }}</a>
+                <a href="/l/{{ $link->id }}/afficher">Afficher</a>
+            </li>
+            @endforeach
         </div>
     </div>
 @endsection

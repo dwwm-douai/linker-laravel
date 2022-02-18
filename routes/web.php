@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LinkController;
+use App\Models\Link;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,13 +16,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        'links' => Link::all(),
+    ]);
 });
 
 Route::get('/l/{id}/afficher', function ($id) {
-    return view('show', ['id' => $id]);
+    $link = Link::find($id);
+
+    return view('show', ['link' => $link]);
 });
 
 Route::get('/l/{id}', function ($id) {
-    return 'REDIRECT TO '.$id;
+    $link = Link::find($id);
+
+    return redirect($link->url);
 });
