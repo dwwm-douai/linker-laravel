@@ -15,12 +15,12 @@
 
             <div class="mb-3">
                 <label for="name">Nom du lien</label>
-                <input type="text" name="name" id="name" class="form-control" placeholder="Tweet">
+                <input type="text" name="name" id="name" class="form-control" placeholder="Tweet" value="{{ old('name') }}">
             </div>
 
             <div class="mb-3">
                 <label for="url">Votre lien</label>
-                <input type="text" name="url" id="url" class="form-control" placeholder="https://twitter.com/markshust/status/1494374856355463169?s=12">
+                <input type="text" name="url" id="url" class="form-control" placeholder="https://twitter.com/markshust/status/1494374856355463169?s=12" value="{{ old('url') }}">
             </div>
     
             <button class="btn btn-dark">Raccourcir</button>

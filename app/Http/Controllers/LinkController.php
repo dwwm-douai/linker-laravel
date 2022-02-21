@@ -16,7 +16,7 @@ class LinkController extends Controller
     public function store()
     {
         request()->validate([
-            'name' => 'required|min:2',
+            'name' => 'required|min:2|unique:links',
             'url' => 'required|url',
         ]);
 
